@@ -203,7 +203,7 @@ with st.sidebar:
         "<div style='text-align:center; padding: 0.5rem; border: 2px solid #d4af37; "
         "border-radius: 12px; margin-bottom: 1rem;'>"
         "<h3 style='margin:0; color:#d4af37;'>نسيج ستوديو</h3>"
-        "<p style='margin:0; font-size:0.8rem; color:#e0c9a6;'>Nasij Studio Premium</p>
+        "<p style='margin:0; font-size:0.8rem; color:#e0c9a6;'>Nasij Studio Premium</p>"
         "</div>",
         unsafe_allow_html=True
     )
@@ -291,7 +291,6 @@ elif page == "🎨 تصميم الاستوديو":
                 st.warning("يرجى إدخال وصف نصي للتصميم المطلوب أولاً.")
             else:
                 with st.spinner("🧠 يقوم الذكاء الاصطناعي بنسج وتوليد سجادتك الفاخرة الآن..."):
-                    # إرسال البيانات فوراً لمحرك توليد الصور المجاني المفتوح لتوليد صور حقيقية طبقاً للوصف
                     search_prompt = f"Luxurious 3D carpet rug, {prompt_text}, {art_style} style, {dominant_colors} theme, hyperrealistic textile texture, 4k"
                     encoded_prompt = urllib.parse.quote(search_prompt)
                     image_url = f"https://image.pollinations.ai/p/{encoded_prompt}?width=800&height=800&nologo=true"
@@ -324,7 +323,6 @@ elif page == "📚 الكاتالوج الأيقوني":
         st.markdown(f"<h3>{item['title']}</h3>", unsafe_allow_html=True)
         st.markdown(f"<p>{item['desc']}</p>", unsafe_allow_html=True)
         
-        # استدعاء تلقائي للصور من الذكاء الاصطناعي لحل مشكلة "الصورة غير متوفرة"
         encoded_p = urllib.parse.quote(item['prompt'])
         cat_url = f"https://image.pollinations.ai/p/{encoded_p}?width=700&height=400&nologo=true"
         st.image(cat_url, use_container_width=True)
@@ -369,7 +367,7 @@ elif page == "💰 المتجر وبوابات الأرباح":
         with col_save:
             if st.button("💾 حفظ الطلب بالنظام"):
                 if customer_name.strip() == "" or phone_number.strip() == "":
-                    st.error("الرجاء إدخال البيانات أولاً.")
+                    st.error("الرجاء إدخل البيانات أولاً.")
                 else:
                     save_order(customer_name, phone_number, business_path, order_details, total_cost)
                     st.success("تم الحفظ في قاعدة بيانات SQLite بنجاح.")
